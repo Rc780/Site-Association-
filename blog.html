@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Blog · Liens &amp; Savoirs</title>
+  <meta name="claude:viewport-fit-sides" content="cover">
+  <meta name="description" content="Actualités de l'association, retours d'événements, conseils pour apprendre les langues et découvertes culturelles.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Frank+Ruhl+Libre:wght@500&family=Young+Serif&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+  <script src="assets/js/config.js" defer></script>
+  <script src="data/articles.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/blog.js" defer></script>
+</head>
+<body data-page="blog">
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <header class="site-header" data-site-header></header>
+
+  <main id="contenu">
+    <section class="page-hero">
+      <div class="wrap">
+        <div class="arche motif" aria-hidden="true"></div>
+        <ol class="fil" aria-label="Fil d'Ariane"><li><a href="index.html">Accueil</a></li><li>Blog</li></ol>
+        <p class="eyebrow">Le blog</p>
+        <h1>Actualités et découvertes</h1>
+        <p class="lead">Retours d'événements, conseils pour apprendre les langues, coulisses de l'association&nbsp;: nos dernières nouvelles.</p>
+      </div>
+    </section>
+
+    <section class="band band--serre">
+      <div class="wrap">
+        <div class="blog-barre">
+          <div class="filtres" id="rubriques" role="group" aria-label="Filtrer par rubrique"></div>
+          <label class="recherche">
+            <span class="sr-only">Rechercher un article</span>
+            <span data-icone="recherche"></span>
+            <input type="search" id="recherche" placeholder="Rechercher un article" autocomplete="off">
+          </label>
+        </div>
+        <p class="muted" id="compte" aria-live="polite"></p>
+        <div id="une"></div>
+        <div id="grille"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-site-footer></footer>
+</body>
+</html>

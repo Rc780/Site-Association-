@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Agenda · Liens &amp; Savoirs</title>
+  <meta name="claude:viewport-fit-sides" content="cover">
+  <meta name="description" content="Le calendrier des événements de l'association&nbsp;: ateliers de langues, soirées culturelles, rencontres et permanences.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Frank+Ruhl+Libre:wght@500&family=Young+Serif&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+  <script src="assets/js/config.js" defer></script>
+  <script src="data/evenements.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/agenda.js" defer></script>
+</head>
+<body data-page="agenda">
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <header class="site-header" data-site-header></header>
+
+  <main id="contenu">
+    <section class="page-hero">
+      <div class="wrap">
+        <div class="arche motif" aria-hidden="true"></div>
+        <ol class="fil" aria-label="Fil d'Ariane"><li><a href="index.html">Accueil</a></li><li>Agenda</li></ol>
+        <p class="eyebrow">Agenda</p>
+        <h1>Tous nos rendez-vous</h1>
+        <p class="lead">Ateliers de langues, soirées culturelles, rencontres et permanences&nbsp;: choisissez une date, une catégorie, et venez nous retrouver.</p>
+      </div>
+    </section>
+
+    <section class="band band--serre">
+      <div class="wrap">
+        <div class="agenda-barre">
+          <div class="filtres" id="filtres" role="group" aria-label="Filtrer par catégorie"></div>
+          <div class="bascule" role="group" aria-label="Affichage">
+            <button type="button" data-vue="mois" aria-pressed="true">Calendrier</button>
+            <button type="button" data-vue="liste" aria-pressed="false">Liste</button>
+          </div>
+        </div>
+
+        <!-- Vue calendrier -->
+        <div class="agenda-grid" id="vue-mois">
+          <div class="calendrier">
+            <div class="cal-tete">
+              <h2 id="cal-titre" aria-live="polite"></h2>
+              <div class="cal-nav">
+                <button class="icon-btn" type="button" id="cal-prec" aria-label="Mois précédent"></button>
+                <button class="btn btn--ghost btn--sm" type="button" id="cal-auj">Aujourd'hui</button>
+                <button class="icon-btn" type="button" id="cal-suiv" aria-label="Mois suivant"></button>
+              </div>
+            </div>
+            <div class="cal-jours-sem" aria-hidden="true">
+              <div>Lun</div><div>Mar</div><div>Mer</div><div>Jeu</div><div>Ven</div><div>Sam</div><div>Dim</div>
+            </div>
+            <div class="cal-cases" id="cal-cases"></div>
+          </div>
+          <aside class="panneau-jour" id="panneau-jour" aria-live="polite"></aside>
+        </div>
+
+        <!-- Vue liste -->
+        <div id="vue-liste" hidden>
+          <div id="liste-contenu"></div>
+          <div class="centre mt-l">
+            <button class="btn btn--ghost" type="button" id="voir-passes">Afficher aussi les événements passés</button>
+          </div>
+        </div>
+
+        <p class="note mt-m">Les horaires et les lieux peuvent évoluer. En cas de doute, <a href="contact.html">contactez-nous</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="fenetre" id="fenetre-evt" aria-labelledby="fenetre-titre"></dialog>
+
+  <footer class="site-footer" data-site-footer></footer>
+</body>
+</html>

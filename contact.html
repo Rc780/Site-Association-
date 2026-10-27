@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Contact · Liens &amp; Savoirs</title>
+  <meta name="claude:viewport-fit-sides" content="cover">
+  <meta name="description" content="Contacter l'association&nbsp;: renseignements, adhésion, inscription aux ateliers, devis de traduction, bénévolat et partenariats.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Frank+Ruhl+Libre:wght@500&family=Young+Serif&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/contact.js" defer></script>
+</head>
+<body data-page="contact">
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <header class="site-header" data-site-header></header>
+
+  <main id="contenu">
+    <section class="page-hero">
+      <div class="wrap">
+        <div class="arche motif" aria-hidden="true"></div>
+        <ol class="fil" aria-label="Fil d'Ariane"><li><a href="index.html">Accueil</a></li><li>Contact</li></ol>
+        <p class="eyebrow">Contact</p>
+        <h1>Parlons-en&nbsp;!</h1>
+        <p class="lead">Une question, une adhésion, une demande de devis de traduction ou une idée de partenariat&nbsp;? Écrivez-nous&nbsp;: nous vous répondons dans les meilleurs délais.</p>
+      </div>
+    </section>
+
+    <section class="band band--serre">
+      <div class="wrap contact-grid">
+        <div class="stack stack--large">
+          <ul class="coord">
+            <li>
+              <span class="icone" data-icone="lieu"></span>
+              <div><strong>Adresse</strong><span data-cfg="contact.adresse"></span><br><span data-cfg="contact.codePostalVille"></span></div>
+            </li>
+            <li>
+              <span class="icone" data-icone="mail"></span>
+              <div><strong>E-mail</strong><a data-cfg-lien="email" href="#"></a></div>
+            </li>
+            <li>
+              <span class="icone" data-icone="tel"></span>
+              <div><strong>Téléphone</strong><a data-cfg-lien="telephone" href="#"></a></div>
+            </li>
+            <li>
+              <span class="icone" data-icone="horloge"></span>
+              <div><strong>Permanences</strong><span data-cfg="contact.permanences"></span></div>
+            </li>
+          </ul>
+          <div class="encart">
+            <h3>Besoin d'une traduction&nbsp;?</h3>
+            <p class="muted">Choisissez «&nbsp;Devis de traduction&nbsp;» dans le formulaire et précisez la langue et le type de document. Vous pourrez nous envoyer une copie du document en réponse à notre e-mail.</p>
+          </div>
+        </div>
+
+        <div class="encart" id="formulaire">
+          <h2>Envoyer un message</h2>
+          <form class="formulaire" id="form-contact" novalidate>
+            <div class="champ">
+              <label for="f-nom">Nom et prénom</label>
+              <input id="f-nom" name="nom" type="text" autocomplete="name" required>
+            </div>
+            <div class="champ">
+              <label for="f-email">E-mail</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="champ">
+              <label for="f-tel">Téléphone <span class="aide">(facultatif)</span></label>
+              <input id="f-tel" name="telephone" type="tel" autocomplete="tel">
+            </div>
+            <div class="champ">
+              <label for="f-objet">Objet</label>
+              <select id="f-objet" name="objet">
+                <option value="Renseignement">Demande de renseignement</option>
+                <option value="Adhésion">Adhésion</option>
+                <option value="Inscription">Inscription à un atelier ou un événement</option>
+                <option value="Devis de traduction">Devis de traduction</option>
+                <option value="Interprétariat">Interprétariat</option>
+                <option value="Bénévolat">Bénévolat</option>
+                <option value="Partenariat">Partenariat</option>
+              </select>
+            </div>
+            <div class="champ large" id="champ-langues" hidden>
+              <label for="f-langues">Langues et documents concernés</label>
+              <input id="f-langues" name="langues" type="text" placeholder="Ex.&nbsp;: acte de naissance, de l'arabe vers le français">
+            </div>
+            <div class="champ large">
+              <label for="f-message">Message</label>
+              <textarea id="f-message" name="message" required></textarea>
+            </div>
+            <label class="case large" for="f-accord">
+              <input type="checkbox" id="f-accord" name="accord" required>
+              <span>J'accepte que mes informations soient utilisées pour répondre à ma demande. Elles ne sont jamais transmises à des tiers.</span>
+            </label>
+            <div class="large btn-row">
+              <button class="btn btn--primary" type="submit">Envoyer le message</button>
+            </div>
+            <div class="large" id="etat" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band--alt" id="rejoindre">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Rejoignez-nous</p>
+            <h2>Trois façons de nous rejoindre</h2>
+          </div>
+        </div>
+        <div class="piliers">
+          <article class="pilier" id="adhesion">
+            <span class="icone" data-icone="personnes"></span>
+            <h3>Adhérer</h3>
+            <p>L'adhésion est annuelle. Elle donne accès aux ateliers et aux activités réservées aux adhérents, et permet de voter à l'assemblée générale.</p>
+            <div class="btn-row mt-s">
+              <a class="btn btn--primary btn--sm" data-cfg-lien="adhesion" data-adhesion-en-ligne href="#">Adhérer en ligne</a>
+              <button class="btn btn--ghost btn--sm" type="button" data-objet="Adhésion">Nous écrire</button>
+            </div>
+          </article>
+          <article class="pilier" id="benevolat">
+            <span class="icone" data-icone="coeur"></span>
+            <h3>Devenir bénévole</h3>
+            <p>Animer un atelier, accueillir le public, aider à la traduction, organiser un événement&nbsp;: quelques heures suffisent pour faire la différence.</p>
+            <div class="btn-row mt-s">
+              <button class="btn btn--ghost btn--sm" type="button" data-objet="Bénévolat">Proposer mon aide</button>
+            </div>
+          </article>
+          <article class="pilier" id="partenariat">
+            <span class="icone" data-icone="liens"></span>
+            <h3>Devenir partenaire</h3>
+            <p>Collectivité, établissement, association ou entreprise&nbsp;: construisons ensemble des projets culturels et solidaires.</p>
+            <div class="btn-row mt-s">
+              <button class="btn btn--ghost btn--sm" type="button" data-objet="Partenariat">Proposer un partenariat</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-site-footer></footer>
+</body>
+</html>

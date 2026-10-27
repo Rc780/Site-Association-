@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Espace rédaction · Liens &amp; Savoirs</title>
+  <meta name="claude:viewport-fit-sides" content="cover">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Frank+Ruhl+Libre:wght@500&family=Young+Serif&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+  <script src="assets/js/config.js" defer></script>
+  <script src="data/articles.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/redaction.js" defer></script>
+</head>
+<body data-page="redaction">
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <header class="site-header" data-site-header></header>
+
+  <main id="contenu">
+    <section class="page-hero">
+      <div class="wrap">
+        <div class="arche motif" aria-hidden="true"></div>
+        <ol class="fil" aria-label="Fil d'Ariane"><li><a href="index.html">Accueil</a></li><li>Espace rédaction</li></ol>
+        <p class="eyebrow">Espace rédaction</p>
+        <h1>Ajouter un événement ou un article</h1>
+        <p class="lead">Remplissez le formulaire&nbsp;: la page prépare le texte à coller dans le bon fichier du site. Aucune connaissance technique n'est nécessaire.</p>
+      </div>
+    </section>
+
+    <section class="band band--serre">
+      <div class="wrap">
+        <div class="onglets" role="tablist" aria-label="Type de contenu">
+          <button type="button" role="tab" id="onglet-evenement" aria-controls="panneau-evenement" aria-selected="true">Nouvel événement</button>
+          <button type="button" role="tab" id="onglet-article" aria-controls="panneau-article" aria-selected="false" tabindex="-1">Nouvel article</button>
+        </div>
+
+        <!-- Événement -->
+        <div role="tabpanel" id="panneau-evenement" aria-labelledby="onglet-evenement">
+          <div class="redaction-grid">
+            <form class="formulaire" id="form-evenement" autocomplete="off">
+              <div class="champ large">
+                <label for="e-titre">Titre</label>
+                <input id="e-titre" name="titre" type="text" required>
+              </div>
+              <div class="champ">
+                <label for="e-categorie">Catégorie</label>
+                <select id="e-categorie" name="categorie"></select>
+              </div>
+              <div class="champ">
+                <label for="e-lieu">Lieu</label>
+                <input id="e-lieu" name="lieu" type="text">
+              </div>
+              <div class="champ">
+                <label for="e-date">Date</label>
+                <input id="e-date" name="date" type="date" required>
+              </div>
+              <div class="champ">
+                <label for="e-dateFin">Date de fin <span class="aide">(si plusieurs jours)</span></label>
+                <input id="e-dateFin" name="dateFin" type="date">
+              </div>
+              <div class="champ">
+                <label for="e-debut">Heure de début</label>
+                <input id="e-debut" name="debut" type="time">
+              </div>
+              <div class="champ">
+                <label for="e-fin">Heure de fin</label>
+                <input id="e-fin" name="fin" type="time">
+              </div>
+              <div class="champ">
+                <label for="e-prix">Tarif</label>
+                <input id="e-prix" name="prix" type="text" placeholder="Entrée libre, 5 €…">
+              </div>
+              <div class="champ">
+                <label for="e-inscription">Lien d'inscription <span class="aide">(facultatif)</span></label>
+                <input id="e-inscription" name="inscription" type="text" placeholder="contact.html ou https://…">
+              </div>
+              <div class="champ large">
+                <label for="e-description">Description</label>
+                <textarea id="e-description" name="description"></textarea>
+              </div>
+              <label class="case large" for="e-regulier">
+                <input type="checkbox" id="e-regulier" name="regulier">
+                <span>Rendez-vous régulier (atelier hebdomadaire, permanence…)</span>
+              </label>
+              <div class="champ" data-regulier hidden>
+                <label for="e-semaines">Fréquence</label>
+                <select id="e-semaines" name="semaines">
+                  <option value="1">Chaque semaine</option>
+                  <option value="2">Toutes les deux semaines</option>
+                </select>
+              </div>
+              <div class="champ" data-regulier hidden>
+                <label for="e-jusquau">Jusqu'au</label>
+                <input id="e-jusquau" name="jusquau" type="date">
+              </div>
+              <div class="champ large" data-regulier hidden>
+                <label for="e-sauf">Sauf les dates <span class="aide">(facultatif, séparées par des virgules, ex. 2026-12-22, 2026-12-29)</span></label>
+                <input id="e-sauf" name="sauf" type="text">
+              </div>
+              <div class="large btn-row">
+                <button class="btn btn--ghost btn--sm" type="button" data-effacer>Vider le formulaire</button>
+              </div>
+            </form>
+
+            <div class="apercu">
+              <p class="titre-petit">Aperçu</p>
+              <div id="apercu-evenement"></div>
+              <p class="titre-petit mt-s">Texte à copier</p>
+              <pre class="code" id="code-evenement"></pre>
+              <div class="btn-row">
+                <button class="btn btn--primary btn--sm" type="button" data-copier="code-evenement">Copier le texte</button>
+                <a class="btn btn--ghost btn--sm" data-github="data/evenements.js" target="_blank" rel="noopener" hidden>Ouvrir le fichier sur GitHub</a>
+              </div>
+              <ol class="etapes-texte">
+                <li>Cliquez sur «&nbsp;Copier le texte ».</li>
+                <li>Ouvrez le fichier <code>data/evenements.js</code> sur GitHub (bouton ci-dessus, puis l'icône crayon si besoin).</li>
+                <li>Collez le texte sur la ligne juste après <code>window.EVENEMENTS = [</code>.</li>
+                <li>Cliquez sur «&nbsp;Commit changes ». Le site est à jour en une à deux minutes.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article -->
+        <div role="tabpanel" id="panneau-article" aria-labelledby="onglet-article" hidden>
+          <div class="redaction-grid">
+            <form class="formulaire" id="form-article" autocomplete="off">
+              <div class="champ large">
+                <label for="a-titre">Titre</label>
+                <input id="a-titre" name="titre" type="text" required>
+              </div>
+              <div class="champ">
+                <label for="a-date">Date de publication</label>
+                <input id="a-date" name="date" type="date" required>
+              </div>
+              <div class="champ">
+                <label for="a-categorie">Rubrique</label>
+                <input id="a-categorie" name="categorie" type="text" list="rubriques-existantes">
+                <datalist id="rubriques-existantes"></datalist>
+              </div>
+              <div class="champ">
+                <label for="a-auteur">Auteur</label>
+                <input id="a-auteur" name="auteur" type="text">
+              </div>
+              <div class="champ">
+                <label for="a-slug">Adresse de l'article <span class="aide">(remplie automatiquement)</span></label>
+                <input id="a-slug" name="slug" type="text">
+              </div>
+              <div class="champ large">
+                <label for="a-resume">Résumé <span class="aide">(une ou deux phrases)</span></label>
+                <textarea id="a-resume" name="resume" rows="2"></textarea>
+              </div>
+              <div class="champ">
+                <label for="a-motif">Mot sur la vignette <span class="aide">(facultatif)</span></label>
+                <input id="a-motif" name="motif" type="text" placeholder="Ex.&nbsp;: مرحبا · שלום">
+              </div>
+              <div class="champ">
+                <label for="a-image">Photo <span class="aide">(facultatif)</span></label>
+                <input id="a-image" name="image" type="text" placeholder="assets/img/ma-photo.jpg">
+              </div>
+              <div class="champ large">
+                <label for="a-contenu">Texte de l'article</label>
+                <textarea id="a-contenu" name="contenu" rows="14"></textarea>
+                <span class="aide">Mise en forme&nbsp;: <code>## Intertitre</code> · <code>**gras**</code> · <code>*italique*</code> · <code>- liste</code> · <code>&gt; citation</code> · <code>[lien](https://…)</code> · <code>![légende](assets/img/photo.jpg)</code>. Laissez une ligne vide entre deux paragraphes.</span>
+              </div>
+              <div class="large btn-row">
+                <button class="btn btn--ghost btn--sm" type="button" data-effacer>Vider le formulaire</button>
+              </div>
+            </form>
+
+            <div class="apercu">
+              <p class="titre-petit">Aperçu de la vignette</p>
+              <div id="apercu-article"></div>
+              <p class="titre-petit mt-s">Texte à copier</p>
+              <pre class="code" id="code-article"></pre>
+              <div class="btn-row">
+                <button class="btn btn--primary btn--sm" type="button" data-copier="code-article">Copier le texte</button>
+                <a class="btn btn--ghost btn--sm" data-github="data/articles.js" target="_blank" rel="noopener" hidden>Ouvrir le fichier sur GitHub</a>
+              </div>
+              <ol class="etapes-texte">
+                <li>Cliquez sur «&nbsp;Copier le texte ».</li>
+                <li>Ouvrez le fichier <code>data/articles.js</code> sur GitHub.</li>
+                <li>Collez le texte sur la ligne juste après <code>window.ARTICLES = [</code>.</li>
+                <li>Pour une photo, déposez-la d'abord dans le dossier <code>assets/img</code> («&nbsp;Add file », puis «&nbsp;Upload files »).</li>
+                <li>Cliquez sur «&nbsp;Commit changes ». L'article est en ligne en une à deux minutes.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="mt-l">
+            <p class="titre-petit">Aperçu du texte</p>
+            <div class="encart"><div class="prose" id="apercu-texte"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-site-footer></footer>
+</body>
+</html>
