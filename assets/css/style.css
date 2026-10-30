@@ -181,7 +181,7 @@ a:hover { color: var(--cannelle-vif); }
   white-space: nowrap; border: 0;
 }
 
-[dir="rtl"][lang="ar"], .ar { font-family: var(--f-arabe); }
+[dir="rtl"]:is([lang="ar"], [lang="ary"], [lang="arq"], [lang="aeb"]), .ar { font-family: var(--f-arabe); }
 [dir="rtl"][lang="he"], .he { font-family: var(--f-hebreu); }
 
 /* --------------------------------------------------------------------------
@@ -479,8 +479,9 @@ a:hover { color: var(--cannelle-vif); }
   transform: translateY(10px);
   transition: opacity .6s ease, transform .6s ease;
 }
-.salut-mot[lang="ar"] { font-family: var(--f-arabe); font-size: clamp(3rem, 2rem + 3.4vw, 4.6rem); }
-.salut-mot[lang="he"] { font-family: var(--f-hebreu); font-weight: 500; }
+.salut-mot { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.salut-texte[dir="rtl"] { font-family: var(--f-arabe); font-size: clamp(3rem, 2rem + 3.4vw, 4.6rem); line-height: 1.3; }
+.salut-mot small { font: italic 500 var(--t-s)/1.2 var(--f-texte); letter-spacing: 0.04em; color: var(--noyer-doux); }
 .salut-mot.actif { opacity: 1; transform: none; }
 
 .langues-liste {

@@ -576,7 +576,10 @@
   /* Mot de bienvenue de la page d'accueil : ajoutez ou retirez des langues ici. */
   const SALUTS = [
     { mot: "Bienvenue", langue: "Français", lang: "fr" },
-    { mot: "أهلاً وسهلاً", langue: "Arabe", lang: "ar", rtl: true }
+    { mot: "أهلاً وسهلاً", prononciation: "ahlan wa sahlan", langue: "Arabe", lang: "ar", rtl: true },
+    { mot: "مرحبا بيكم", prononciation: "mrehba bikoum", langue: "Marocain", lang: "ary", rtl: true },
+    { mot: "مرحبا بيكم", prononciation: "marhba bikoum", langue: "Algérien", lang: "arq", rtl: true },
+    { mot: "مرحبا بيكم", prononciation: "marhbé bikom", langue: "Tunisien", lang: "aeb", rtl: true }
   ];
 
   function blocSalut() {
@@ -585,7 +588,10 @@
     const mots = zone.querySelector(".salut");
     const boutons = zone.querySelector(".langues-liste");
     mots.innerHTML = SALUTS.map((s, i) =>
-      `<span class="salut-mot${i === 0 ? " actif" : ""}" lang="${s.lang}"${s.rtl ? ' dir="rtl"' : ""}>${esc(s.mot)}</span>`).join("");
+      `<span class="salut-mot${i === 0 ? " actif" : ""}">
+        <span class="salut-texte" lang="${s.lang}"${s.rtl ? ' dir="rtl"' : ""}>${esc(s.mot)}</span>
+        ${s.prononciation ? `<small lang="${s.lang}-Latn">${esc(s.prononciation)}</small>` : ""}
+      </span>`).join("");
     boutons.innerHTML = SALUTS.map((s, i) =>
       `<li><button type="button" aria-pressed="${i === 0}" data-i="${i}">${esc(s.langue)}</button></li>`).join("");
 

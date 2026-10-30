@@ -1,4 +1,4 @@
-# Site de l'association « Prunus; Amygdalus »
+# Site de l'association « Prunus amygdalus »
 
 Site vitrine d'une association culturelle : **aide, culture, savoirs et rencontres**.
 Il comprend un agenda interactif, un blog et un espace de rédaction pour ajouter du contenu sans écrire de code.

@@ -6,7 +6,7 @@
 
 window.SITE = {
   // Identité
-  nom: "Prunus; Amygdalus",
+  nom: "Prunus amygdalus",
   sousTitre: "Association culturelle",
   devise: "Aide, culture, savoirs et rencontres",
   slogan: "Rejoignez-nous et construisons des liens ensemble.",
