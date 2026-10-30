@@ -1,14 +1,14 @@
 {
   "nom": "Prunus amygdalus",
   "sousTitre": "Association culturelle",
-  "devise": "Aide, culture, savoirs et rencontres",
   "slogan": "Rejoignez-nous et construisons des liens ensemble.",
+  "devise": "Aide, culture, savoirs et rencontres",
   "contact": {
-    "email": "contact@example.org",
-    "telephone": "01 99 00 12 34",
-    "adresse": "12 rue de l'Exemple",
-    "codePostalVille": "75000 Votre ville",
-    "permanences": "Mardi et jeudi, 17 h – 19 h · Samedi, 10 h – 12 h"
+    "email": "E-mail de l'asso à mettre",
+    "telephone": "Numéro de l'asso à mettre",
+    "adresse": "Adresse de l'asso à mettre",
+    "codePostalVille": "Code postal et ville de l'asso à mettre",
+    "permanences": "Horaires de l'asso à mettre"
   },
   "reseaux": {
     "facebook": "",
