@@ -1,0 +1,19 @@
+{
+  "titre": "Atelier d'hébreu moderne",
+  "categorie": "langues",
+  "date": "2026-10-08",
+  "debut": "18:30",
+  "fin": "20:00",
+  "lieu": "Maison des associations, salle 2",
+  "prix": "Réservé aux adhérents",
+  "inscription": "contact.html",
+  "description": "Lecture, conversation et vocabulaire pratique. Le groupe accueille les grands débutants comme celles et ceux qui veulent reprendre après une pause.",
+  "repetition": {
+    "semaines": 1,
+    "jusquau": "2027-01-28",
+    "sauf": [
+      "2026-12-24",
+      "2026-12-31"
+    ]
+  }
+}

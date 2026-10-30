@@ -70,7 +70,7 @@
   const majuscule = (s) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : "");
 
   function versDate(str) {
-    const [a, m, j] = String(str).split("-").map(Number);
+    const [a, m, j] = String(str).slice(0, 10).split("-").map(Number);
     return new Date(a, (m || 1) - 1, j || 1);
   }
   const versISO = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
@@ -115,11 +115,35 @@
 
   let cacheOccurrences = null;
 
+  /* Harmonise les formats enregistrés par l'administration
+     (« 18:30:00 » → « 18:30 », champs vides, dates avec heure…). */
+  const jourISO = (v) => String(v || "").trim().slice(0, 10);
+  const heureHM = (v) => String(v || "").trim().slice(0, 5);
+  function normaliserEvenement(e) {
+    if (!e) return e;
+    const r = Object.assign({}, e, {
+      date: jourISO(e.date),
+      dateFin: jourISO(e.dateFin),
+      debut: heureHM(e.debut),
+      fin: heureHM(e.fin)
+    });
+    const rep = e.repetition;
+    r.repetition = rep && rep.jusquau
+      ? {
+          semaines: Number(rep.semaines) || 1,
+          jusquau: jourISO(rep.jusquau),
+          sauf: (Array.isArray(rep.sauf) ? rep.sauf : String(rep.sauf || "").split(","))
+            .map(jourISO).filter(Boolean)
+        }
+      : null;
+    return r;
+  }
+
   /* Développe les événements réguliers en dates individuelles, triées. */
   function occurrences() {
     if (cacheOccurrences) return cacheOccurrences;
     const liste = [];
-    (window.EVENEMENTS || []).forEach((e) => {
+    (window.EVENEMENTS || []).map(normaliserEvenement).forEach((e) => {
       if (!e || !e.date) return;
       const debut = versDate(e.date);
       const duree = e.dateFin ? Math.max(0, Math.round((versDate(e.dateFin) - debut) / 864e5)) : 0;
@@ -294,6 +318,10 @@
     return Math.max(1, Math.round(mots / 200));
   }
 
+  /* L'administration enregistre les photos avec un « / » initial ; le site étant
+     publié dans un sous-dossier, on les rend relatives. */
+  const cheminLocal = (u) => String(u || "").replace(/^\/(?!\/)/, "");
+
   function teinte(a) {
     if (a.teinte) return a.teinte;
     let h = 0;
@@ -302,7 +330,7 @@
   }
 
   function couverture(a) {
-    if (a.image) return `<div class="couverture"><img src="${esc(a.image)}" alt="" loading="lazy"></div>`;
+    if (a.image) return `<div class="couverture"><img src="${esc(cheminLocal(a.image))}" alt="" loading="lazy"></div>`;
     const motif = a.motif || String(a.titre || "").charAt(0);
     return `<div class="couverture motif couv-${teinte(a)}" aria-hidden="true"><span class="motif-texte" dir="auto">${esc(motif)}</span></div>`;
   }
@@ -319,15 +347,18 @@
   }
 
   /* Markdown simplifié : intertitres, listes, citations, images, liens, gras, italique */
-  const urlSure = (u) => (/^\s*(javascript|data|vbscript):/i.test(u) ? "#" : u);
+  const urlSure = (u) => (/^\s*(javascript|data|vbscript):/i.test(u) ? "#" : cheminLocal(u));
 
   function enLigne(t) {
     return t
+      .replace(/\\([\\`*_{}\[\]()#+\-.!~|])/g, (m, c) => `&#${c.charCodeAt(0)};`)
       .replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, (m, alt, src) => `<img src="${urlSure(src)}" alt="${alt}" loading="lazy">`)
       .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, txt, href) =>
         `<a href="${urlSure(href)}"${/^https?:/i.test(href) ? ' target="_blank" rel="noopener"' : ""}>${txt}</a>`)
       .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+      .replace(/(^|[^\w])__([^_]+)__(?=[^\w]|$)/g, "$1<strong>$2</strong>")
       .replace(/(^|[^*\w])\*([^*\s][^*]*?)\*/g, "$1<em>$2</em>")
+      .replace(/(^|[^\w])_([^_\s][^_]*?)_(?=[^\w]|$)/g, "$1<em>$2</em>")
       .replace(/`([^`]+)`/g, "<code>$1</code>");
   }
 
@@ -378,7 +409,8 @@
       } else {
         fermerListe();
         fermerCitation();
-        para.push(l);
+        const saut = /\\$/.test(l) || / {2,}$/.test(brut);
+        para.push(saut ? l.replace(/\\$/, "") + "<br>" : l);
       }
     }
     toutFermer();
@@ -506,7 +538,7 @@
       </div>
       <div class="footer-bas">
         <span>© ${new Date().getFullYear()} ${esc(SITE.nom)}</span>
-        <nav aria-label="Liens secondaires"><a href="mentions-legales.html">Mentions légales</a><a href="redaction.html">Espace rédaction</a></nav>
+        <nav aria-label="Liens secondaires"><a href="mentions-legales.html">Mentions légales</a><a href="admin/" rel="nofollow">Administration</a></nav>
       </div>
     </div>`;
   }
@@ -624,6 +656,13 @@
     ics, lienGoogle, telecharger, copier,
     articles, lienArticle, dateArticle, tempsLecture, couverture, carteArticle, markdown
   });
+
+  // Le nom de l'association se règle dans l'administration : on l'applique au titre de l'onglet
+  if (SITE.nom) {
+    document.title = document.title.includes(" · ")
+      ? document.title.replace(/ · [^·]*$/, " · " + SITE.nom)
+      : SITE.nom;
+  }
 
   rendreEntete();
   rendrePied();

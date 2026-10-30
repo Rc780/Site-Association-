@@ -1,0 +1,181 @@
+# Configuration de l'administration du site (Sveltia CMS)
+# Documentation : https://sveltiacms.app/en/docs
+
+backend:
+  name: github
+  repo: Rc780/Site-Association-
+  branch: main
+  # Connexion avec une clé d'accès GitHub (voir le README, « Se connecter »)
+  auth_methods: [token]
+  commit_messages:
+    create: "Ajouter « {{slug}} » ({{collection}})"
+    update: "Modifier « {{slug}} » ({{collection}})"
+    delete: "Supprimer « {{slug}} » ({{collection}})"
+    uploadMedia: "Ajouter la photo « {{path}} »"
+    deleteMedia: "Supprimer la photo « {{path}} »"
+
+site_url: https://rc780.github.io/Site-Association-/
+display_url: https://rc780.github.io/Site-Association-/
+
+# Photos envoyées depuis l'administration
+media_folder: assets/img
+public_folder: /assets/img
+
+collections:
+
+  # ---------------------------------------------------------------- Agenda
+  - name: evenements
+    label: Agenda
+    label_singular: Événement
+    description: >-
+      Les rendez-vous affichés dans l'agenda et sur la page d'accueil.
+      Un atelier qui revient chaque semaine se saisit une seule fois (rubrique « Rendez-vous régulier »).
+    folder: _data/evenements
+    format: json
+    extension: json
+    create: true
+    delete: true
+    identifier_field: titre
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{date}} · {{titre}}"
+    sortable_fields:
+      fields: [date, titre, categorie]
+      default:
+        field: date
+        direction: descending
+    fields:
+      - { name: titre, label: Titre, widget: string }
+      - name: categorie
+        label: Catégorie
+        widget: select
+        default: culture
+        options:
+          - { label: Action culturelle, value: culture }
+          - { label: Ateliers de langues, value: langues }
+          - { label: Traduction & accompagnement, value: traduction }
+          - { label: Rencontres, value: rencontre }
+          - { label: Vie associative, value: vie-asso }
+      - { name: date, label: Date, widget: datetime, type: date }
+      - name: dateFin
+        label: Date de fin
+        hint: Seulement pour un événement sur plusieurs jours.
+        widget: datetime
+        type: date
+        required: false
+      - { name: debut, label: Heure de début, widget: datetime, type: time, format: "HH:mm", required: false }
+      - { name: fin, label: Heure de fin, widget: datetime, type: time, format: "HH:mm", required: false }
+      - { name: lieu, label: Lieu, widget: string, required: false }
+      - name: prix
+        label: Tarif
+        hint: "Ex. : Entrée libre, 5 €, Réservé aux adhérents."
+        widget: string
+        required: false
+      - name: inscription
+        label: Lien d'inscription
+        hint: "Écrivez contact.html pour une inscription par le formulaire du site, ou collez une adresse https://… Laissez vide s'il n'y a pas d'inscription."
+        widget: string
+        required: false
+      - { name: description, label: Description, widget: text, required: false }
+      - name: repetition
+        label: Rendez-vous régulier
+        hint: "À remplir seulement pour un atelier ou une permanence qui revient. Sans date dans « Jusqu'au », l'événement n'a lieu qu'une fois."
+        widget: object
+        required: false
+        collapsed: true
+        fields:
+          - name: semaines
+            label: Fréquence
+            widget: select
+            default: 1
+            options:
+              - { label: Chaque semaine, value: 1 }
+              - { label: Toutes les deux semaines, value: 2 }
+          - { name: jusquau, label: "Jusqu'au", widget: datetime, type: date, required: false }
+          - name: sauf
+            label: Sauf les dates
+            hint: "Séances annulées (vacances…), au format AAAA-MM-JJ, séparées par des virgules. Ex. : 2026-12-22, 2026-12-29"
+            widget: list
+            required: false
+
+  # ---------------------------------------------------------------- Blog
+  - name: articles
+    label: Blog
+    label_singular: Article
+    description: Les articles du blog. Le plus récent est mis à la une.
+    folder: _data/articles
+    format: json
+    extension: json
+    create: true
+    delete: true
+    identifier_field: titre
+    slug: "{{slug}}"
+    summary: "{{date}} · {{titre}}"
+    sortable_fields:
+      fields: [date, titre, categorie]
+      default:
+        field: date
+        direction: descending
+    fields:
+      - { name: titre, label: Titre, widget: string }
+      - { name: date, label: Date de publication, widget: datetime, type: date, default: "{{now}}" }
+      - name: categorie
+        label: Rubrique
+        hint: "Ex. : Vie de l'association, Retour sur, Savoirs, Traduction, Ateliers de langues, Partenariats."
+        widget: string
+      - { name: auteur, label: Signature, widget: string, default: "L'équipe de l'association" }
+      - name: resume
+        label: Résumé
+        hint: Une ou deux phrases affichées dans la liste des articles.
+        widget: text
+      - name: image
+        label: Photo de couverture
+        hint: Facultatif. Sans photo, une vignette décorée est affichée.
+        widget: image
+        required: false
+      - name: motif
+        label: Mot sur la vignette
+        hint: "Facultatif, utilisé seulement sans photo. Ex. : مرحبا ou Bienvenue."
+        widget: string
+        required: false
+      - { name: contenu, label: Texte de l'article, widget: markdown }
+
+  # ---------------------------------------------------------------- Réglages
+  - name: reglages
+    label: Réglages du site
+    files:
+      - name: reglages
+        label: Nom, coordonnées et liens
+        file: _data/reglages.json
+        fields:
+          - { name: nom, label: Nom de l'association, widget: string }
+          - { name: sousTitre, label: Sous-titre sous le logo, widget: string }
+          - { name: slogan, label: Slogan (pied de page), widget: string }
+          - { name: devise, label: Devise (pied de page), widget: string }
+          - name: contact
+            label: Coordonnées
+            widget: object
+            fields:
+              - { name: email, label: E-mail, widget: string }
+              - { name: telephone, label: Téléphone, widget: string }
+              - { name: adresse, label: Adresse, widget: string }
+              - { name: codePostalVille, label: Code postal et ville, widget: string }
+              - { name: permanences, label: Jours et horaires de permanence, widget: string }
+          - name: reseaux
+            label: Réseaux sociaux
+            hint: Adresse complète de chaque page (https://…). Laissez vide pour masquer l'icône.
+            widget: object
+            fields:
+              - { name: facebook, label: Facebook, widget: string, required: false }
+              - { name: instagram, label: Instagram, widget: string, required: false }
+              - { name: linkedin, label: LinkedIn, widget: string, required: false }
+              - { name: youtube, label: YouTube, widget: string, required: false }
+          - name: formulaire
+            label: Adresse Formspree du formulaire de contact
+            hint: "Facultatif. Vide : le formulaire ouvre la messagerie du visiteur. Avec une adresse https://formspree.io/f/… : les messages arrivent par e-mail."
+            widget: string
+            required: false
+          - name: adhesionEnLigne
+            label: Lien d'adhésion en ligne
+            hint: Facultatif (HelloAsso par exemple). Ajoute un bouton « Adhérer en ligne ».
+            widget: string
+            required: false

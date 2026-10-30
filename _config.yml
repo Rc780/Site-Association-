@@ -1,0 +1,5 @@
+# Construction du site par GitHub Pages (Jekyll).
+# Les contenus (événements, articles, réglages) sont dans _data/ et se gèrent
+# depuis l'administration : https://rc780.github.io/Site-Association-/admin/
+exclude:
+  - README.md

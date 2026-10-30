@@ -1,0 +1,21 @@
+{
+  "nom": "Prunus amygdalus",
+  "sousTitre": "Association culturelle",
+  "devise": "Aide, culture, savoirs et rencontres",
+  "slogan": "Rejoignez-nous et construisons des liens ensemble.",
+  "contact": {
+    "email": "contact@example.org",
+    "telephone": "01 99 00 12 34",
+    "adresse": "12 rue de l'Exemple",
+    "codePostalVille": "75000 Votre ville",
+    "permanences": "Mardi et jeudi, 17 h – 19 h · Samedi, 10 h – 12 h"
+  },
+  "reseaux": {
+    "facebook": "",
+    "instagram": "",
+    "linkedin": "",
+    "youtube": ""
+  },
+  "formulaire": "",
+  "adhesionEnLigne": ""
+}

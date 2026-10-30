@@ -1,0 +1,17 @@
+{
+  "titre": "Permanence traduction et démarches",
+  "categorie": "traduction",
+  "date": "2026-10-17",
+  "debut": "10:00",
+  "fin": "12:00",
+  "lieu": "Local de l'association",
+  "prix": "Gratuit, sans rendez-vous",
+  "description": "Une question sur la traduction d'un acte, d'un diplôme ou d'un jugement ? Besoin d'un coup de main pour un dossier administratif ? Venez avec vos documents : nous vous orientons et établissons un devis si nécessaire.",
+  "repetition": {
+    "semaines": 2,
+    "jusquau": "2027-01-23",
+    "sauf": [
+      "2026-12-26"
+    ]
+  }
+}
