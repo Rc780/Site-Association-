@@ -392,6 +392,7 @@ a:hover { color: var(--cannelle-vif); }
   .header-actions .btn { display: none; }
   .brand-text small { display: none; }
   .brand svg { width: 38px; height: 38px; }
+  .brand-text strong { font-size: 1.12rem; white-space: normal; line-height: 1.15; }
 }
 
 /* --------------------------------------------------------------------------
@@ -943,8 +944,9 @@ a:hover { color: var(--cannelle-vif); }
 
 .filtres { display: flex; flex-wrap: wrap; gap: 8px; }
 @media (max-width: 620px) {
-  .agenda-barre { flex-direction: column; align-items: stretch; }
+  .agenda-barre { flex-direction: column; flex-wrap: nowrap; align-items: stretch; }
   .agenda-barre .filtres, .blog-barre .filtres {
+    max-width: 100%;
     flex-wrap: nowrap;
     overflow-x: auto;
     scrollbar-width: none;
@@ -953,7 +955,7 @@ a:hover { color: var(--cannelle-vif); }
   .agenda-barre .filtres::-webkit-scrollbar, .blog-barre .filtres::-webkit-scrollbar { display: none; }
   .filtre { white-space: nowrap; flex: none; }
   .bascule { align-self: flex-start; }
-  .blog-barre { flex-direction: column; align-items: stretch; }
+  .blog-barre { flex-direction: column; flex-wrap: nowrap; align-items: stretch; }
   .recherche { flex-basis: auto; }
 }
 .filtre {

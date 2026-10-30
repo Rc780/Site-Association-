@@ -573,13 +573,10 @@
     });
   }
 
+  /* Mot de bienvenue de la page d'accueil : ajoutez ou retirez des langues ici. */
   const SALUTS = [
     { mot: "Bienvenue", langue: "Français", lang: "fr" },
-    { mot: "أهلاً وسهلاً", langue: "Arabe", lang: "ar", rtl: true },
-    { mot: "ברוכים הבאים", langue: "Hébreu", lang: "he", rtl: true },
-    { mot: "Welcome", langue: "Anglais", lang: "en" },
-    { mot: "Bienvenidos", langue: "Espagnol", lang: "es" },
-    { mot: "Benvenuti", langue: "Italien", lang: "it" }
+    { mot: "أهلاً وسهلاً", langue: "Arabe", lang: "ar", rtl: true }
   ];
 
   function blocSalut() {

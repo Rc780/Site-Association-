@@ -6,7 +6,7 @@
 
 window.SITE = {
   // Identité
-  nom: "Liens & Savoirs",
+  nom: "Prugnus; Amygdalus",
   sousTitre: "Association culturelle",
   devise: "Aide, culture, savoirs et rencontres",
   slogan: "Rejoignez-nous et construisons des liens ensemble.",

@@ -1,9 +1,9 @@
-# Site de l'association « Liens & Savoirs »
+# Site de l'association « Prugnus; Amygdalus »
 
 Site vitrine d'une association culturelle : **aide, culture, savoirs et rencontres**.
 Il comprend un agenda interactif, un blog et un espace de rédaction pour ajouter du contenu sans écrire de code.
 
-> « Liens & Savoirs » est un nom provisoire. Les coordonnées, les événements et les articles sont des **exemples** à remplacer.
+> Les coordonnées, les événements et les articles sont des **exemples** à remplacer.
 
 ## Les pages
 
@@ -25,11 +25,13 @@ Un thème sombre s'active automatiquement selon le réglage de l'appareil (bouto
 
 **Nom, slogan, adresse, e-mail, téléphone, réseaux sociaux** : tout se trouve dans `assets/js/config.js`.
 L'en-tête, le pied de page et la page contact se mettent à jour seuls.
-Pensez aussi à remplacer « Liens &amp; Savoirs » dans la balise `<title>` de chaque page.
+Pensez aussi à changer le nom dans la balise `<title>` de chaque page.
 
 **Couleurs et polices** : en haut de `assets/css/style.css` (variables `--sable`, `--cannelle`, `--noyer`…).
 
 **Textes des pages** : directement dans les fichiers `.html`.
+
+**Langues du mot de bienvenue** (carte de la page d'accueil) : liste `SALUTS` dans `assets/js/main.js`.
 
 ## Ajouter un événement ou un article
 
