@@ -433,7 +433,7 @@
      sombre. Le pied de page, toujours sombre, n'utilise que la version claire. */
   function marque(surFondSombre) {
     const img = (fichier, classe) =>
-      `<img class="logo ${classe}" src="assets/img/${fichier}" alt="" width="606" height="218">`;
+      `<img class="logo ${classe}" src="assets/img/${fichier}" alt="" width="649" height="218">`;
     return `<a class="brand" href="index.html" aria-label="${esc(SITE.nom)}, accueil">
       ${surFondSombre ? img("logo-negatif.svg", "") : img("logo.svg", "logo-pour-clair") + img("logo-negatif.svg", "logo-pour-sombre")}
     </a>`;
