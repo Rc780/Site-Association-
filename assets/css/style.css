@@ -783,12 +783,32 @@ a:hover { color: var(--cannelle-vif); }
   background: var(--noyer);
   color: var(--noyer-texte);
 }
-@media (min-width: 861px) {
-  .page-hero .arche ~ * { max-width: calc(100% - clamp(170px, 20vw, 260px) - 48px); }
+/* Médaillon au cœur du dôme : le symbole de la page */
+.arche-icone {
+  position: absolute;
+  left: 50%;
+  top: calc(clamp(170px, 20vw, 260px) / 2);
+  transform: translate(-50%, -50%);
+  width: clamp(92px, 9vw, 116px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--noyer);
+  color: var(--ocre);
+  border: 1.5px solid color-mix(in srgb, var(--ocre) 70%, transparent);
+  box-shadow: 0 0 0 10px var(--noyer), 0 0 0 11.5px color-mix(in srgb, var(--ocre) 30%, transparent);
 }
+.arche-icone svg { width: 56%; height: 56%; stroke-width: 1.2; }
+/* Le texte s'arrête avant le dôme (écrans larges et moyens) */
+.page-hero .wrap { --retrait: 0px; }
+@media (min-width: 861px) {
+  .page-hero .wrap:has(> .arche) { --retrait: calc(clamp(170px, 20vw, 260px) + 48px); }
+}
+.page-hero .wrap > :where(:not(.arche)) { max-width: calc(100% - var(--retrait)); }
 @media (max-width: 860px) { .page-hero .arche { display: none; } }
-.page-hero h1 { max-width: 20ch; }
-.page-hero .lead { max-width: 56ch; }
+.page-hero .wrap > h1 { max-width: min(20ch, calc(100% - var(--retrait))); }
+.page-hero .wrap > .lead { max-width: min(56ch, calc(100% - var(--retrait))); }
 
 .fil {
   display: flex;

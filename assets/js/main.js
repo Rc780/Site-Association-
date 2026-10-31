@@ -29,6 +29,7 @@
     coeur: '<path d="M12 20s-8-4.6-8-10.2A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 2.8C20 15.4 12 20 12 20z"/>',
     liens: '<circle cx="9" cy="12" r="5.5"/><circle cx="15" cy="12" r="5.5"/>',
     personnes: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2a5 5 0 0 1 5.5 4.8"/>',
+    plume: '<path d="M20 4C13 4 7.5 9 6.5 16.5l1 1C15 16.5 20 11 20 4z"/><path d="M4 20 14.5 9.5M9.5 14.5H14M12 12h4"/>',
     livre: '<path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2z"/><path d="M4 20a2 2 0 0 0 2 2h13v-4"/>',
     gauche: '<path d="M15 18l-6-6 6-6"/>',
     droite: '<path d="M9 18l6-6-6-6"/>',
