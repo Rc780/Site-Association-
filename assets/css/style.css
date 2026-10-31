@@ -951,6 +951,7 @@ a:hover { color: var(--cannelle-vif); }
 .langues-tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
 .langues-tags li { display: inline-flex; align-items: baseline; gap: 8px; padding: 8px 14px; border-radius: 999px; background: var(--parchemin); font-weight: 600; font-size: var(--t-s); }
 .langues-tags li span { font-weight: 400; color: var(--ecorce); }
+.band--alt .langues-tags li { background: var(--lin); border: 1px solid var(--trait); }
 
 /* --------------------------------------------------------------------------
    Agenda
