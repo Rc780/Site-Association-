@@ -32,8 +32,7 @@
   --f-titre: "Young Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   --f-texte: "Figtree", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
   --f-arabe: "Amiri", "Noto Naskh Arabic", "Geeza Pro", "Times New Roman", serif;
-  --f-hebreu: "Frank Ruhl Libre", "Noto Serif Hebrew", "Times New Roman", serif;
-  --f-motif: var(--f-titre), "Amiri", "Frank Ruhl Libre", serif;
+  --f-motif: var(--f-titre), "Amiri", serif;
 
   /* Échelle typographique */
   --t-xs: 0.8125rem;
@@ -182,7 +181,6 @@ a:hover { color: var(--cannelle-vif); }
 }
 
 [dir="rtl"]:is([lang="ar"], [lang="ary"], [lang="arq"], [lang="aeb"]), .ar { font-family: var(--f-arabe); }
-[dir="rtl"][lang="he"], .he { font-family: var(--f-hebreu); }
 
 /* --------------------------------------------------------------------------
    Mise en page
