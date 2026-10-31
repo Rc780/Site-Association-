@@ -980,7 +980,6 @@ a:hover { color: var(--cannelle-vif); }
   .filtre { white-space: nowrap; flex: none; }
   .bascule { align-self: flex-start; }
   .blog-barre { flex-direction: column; flex-wrap: nowrap; align-items: stretch; }
-  .recherche { flex-basis: auto; }
 }
 .filtre {
   display: inline-flex;
@@ -1187,6 +1186,7 @@ a.filtre { text-decoration: none; }
 .recherche { position: relative; flex: 0 1 320px; min-width: 0; }
 .recherche svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--ecorce); pointer-events: none; }
 .recherche input[type="search"] { padding-left: 44px; border-radius: 999px; }
+@media (max-width: 620px) { .recherche { flex: none; width: 100%; } }
 
 .article-une {
   display: grid;
