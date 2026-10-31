@@ -37,9 +37,10 @@
   document.querySelectorAll("[data-objet]").forEach((b) =>
     b.addEventListener("click", () => { choisirObjet(b.dataset.objet); allerAuFormulaire(); }));
 
-  // Préremplissage depuis l'adresse : contact.html#devis, contact.html?objet=…&evenement=…
+  // Préremplissage depuis l'adresse : contact.html#traduction, contact.html?objet=…&evenement=…
   const ANCRES = {
-    devis: "Devis de traduction",
+    traduction: "Demande de traduction",
+    devis: "Demande de traduction", // anciens liens
     interpretariat: "Interprétariat",
     atelier: "Inscription",
     adhesion: "Adhésion",
@@ -49,7 +50,7 @@
   const ancre = location.hash.slice(1);
   if (ANCRES[ancre]) {
     choisirObjet(ANCRES[ancre]);
-    if (["devis", "interpretariat", "atelier"].includes(ancre)) allerAuFormulaire();
+    if (["traduction", "devis", "interpretariat", "atelier"].includes(ancre)) allerAuFormulaire();
   }
   const params = new URLSearchParams(location.search);
   if (params.get("objet")) choisirObjet(params.get("objet"));
