@@ -712,7 +712,12 @@ a:hover { color: var(--cannelle-vif); }
   text-align: center;
   unicode-bidi: plaintext;
   word-spacing: 0.15em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15em;
 }
+.couverture .motif-texte span { display: block; }
 .couv-1 { --couv-fond: #3a2a20; --couv-texte: #f3e8d8; }
 .couv-2 { --couv-fond: #8a4b26; --couv-texte: #fff3e3; }
 .couv-3 { --couv-fond: #c9a57a; --couv-texte: #2b1e16; }

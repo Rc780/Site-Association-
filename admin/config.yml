@@ -134,7 +134,7 @@ collections:
         required: false
       - name: motif
         label: Mot sur la vignette
-        hint: "Facultatif, utilisé seulement sans photo. Ex. : مرحبا ou Bienvenue."
+        hint: "Facultatif, utilisé seulement sans photo. Le mot en français puis en arabe, séparés par « · » ; chaque langue s'affiche sur sa ligne. Ex. : Bienvenue · أهلاً وسهلاً"
         widget: string
         required: false
       - { name: contenu, label: Texte de l'article, widget: markdown }

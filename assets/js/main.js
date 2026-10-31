@@ -328,7 +328,9 @@
   function couverture(a) {
     if (a.image) return `<div class="couverture"><img src="${esc(cheminLocal(a.image))}" alt="" loading="lazy"></div>`;
     const motif = a.motif || String(a.titre || "").charAt(0);
-    return `<div class="couverture motif couv-${teinte(a)}" aria-hidden="true"><span class="motif-texte" dir="auto">${esc(motif)}</span></div>`;
+    // « Traduction · ترجمة » : une ligne par langue
+    const lignes = String(motif).split(" · ").map((l) => `<span dir="auto">${esc(l)}</span>`).join("");
+    return `<div class="couverture motif couv-${teinte(a)}" aria-hidden="true"><span class="motif-texte">${lignes}</span></div>`;
   }
 
   const lienArticle = (slug) => "article.html?a=" + encodeURIComponent(slug);
