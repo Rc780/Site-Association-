@@ -62,6 +62,10 @@ automatiquement à partir de `_data/` : il ne faut pas les modifier à la main.
 
 ## Personnaliser l'apparence
 
+**Logo** : dossier `logo/` (SVG pour l'impression, PNG pour le web et les réseaux sociaux).
+Le site utilise `assets/img/logo.svg` (fond clair), `assets/img/logo-negatif.svg` (fond sombre)
+et `assets/img/favicon.svg` (icône d'onglet).
+
 **Couleurs et polices** : en haut de `assets/css/style.css` (variables `--sable`, `--cannelle`, `--noyer`…).
 
 **Textes des pages** (missions, activités, association) : directement dans les fichiers `.html`.
@@ -105,4 +109,5 @@ data/evenements.js       agenda (généré à partir de _data/evenements/)
 data/articles.js         blog (généré à partir de _data/articles/)
 _data/                   les contenus modifiables depuis l'administration
 admin/                   l'administration (Sveltia CMS) et sa configuration
+logo/                    le logo, en SVG et PNG
 ```

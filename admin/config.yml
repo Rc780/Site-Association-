@@ -148,7 +148,7 @@ collections:
         file: _data/reglages.json
         fields:
           - { name: nom, label: Nom de l'association, widget: string }
-          - { name: sousTitre, label: Sous-titre sous le logo, widget: string }
+          - { name: sousTitre, label: Sous-titre (pied de page), widget: string }
           - { name: slogan, label: Slogan (pied de page), widget: string }
           - { name: devise, label: Devise (pied de page), widget: string }
           - name: contact

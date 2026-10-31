@@ -50,12 +50,6 @@
     return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${TRACES[nom] || ""}</svg>`;
   }
 
-  const LOGO = `<svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
-    <circle cx="18.5" cy="24" r="11.5" stroke="currentColor" stroke-width="3"/>
-    <circle cx="29.5" cy="24" r="11.5" style="stroke: var(--ocre)" stroke-width="3"/>
-    <path d="M21.48 12.89A11.5 11.5 0 0 1 26.19 15.45" stroke="currentColor" stroke-width="3"/>
-  </svg>`;
-
   /* ------------------------------------------------------------------------
      Outils
      ------------------------------------------------------------------------ */
@@ -435,10 +429,13 @@
   const contact = SITE.contact || {};
   const telLien = (t) => "tel:" + String(t || "").replace(/[^\d+]/g, "");
 
-  function marque() {
+  /* Logo de l'association (assets/img/) : texte foncé sur fond clair, texte clair sur fond
+     sombre. Le pied de page, toujours sombre, n'utilise que la version claire. */
+  function marque(surFondSombre) {
+    const img = (fichier, classe) =>
+      `<img class="logo ${classe}" src="assets/img/${fichier}" alt="" width="648" height="218">`;
     return `<a class="brand" href="index.html" aria-label="${esc(SITE.nom)}, accueil">
-      ${LOGO}
-      <span class="brand-text"><strong>${esc(SITE.nom)}</strong><small>${esc(SITE.sousTitre)}</small></span>
+      ${surFondSombre ? img("logo-negatif.svg", "") : img("logo.svg", "logo-pour-clair") + img("logo-negatif.svg", "logo-pour-sombre")}
     </a>`;
   }
 
@@ -509,9 +506,9 @@
     pied.innerHTML = `<div class="wrap">
       <div class="footer-grid">
         <div>
-          ${marque()}
+          ${marque(true)}
           <p class="footer-slogan">${esc(SITE.slogan)}</p>
-          <p class="footer-devise">${esc(SITE.devise)}</p>
+          <p class="footer-devise">${[SITE.sousTitre, SITE.devise].filter(Boolean).map(esc).join(" · ")}</p>
           ${reseaux ? `<div class="reseaux">${reseaux}</div>` : ""}
         </div>
         <div>
