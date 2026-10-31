@@ -124,7 +124,7 @@
       <span class="tag">${esc(S.nomCategorie(o.categorie))}</span>
       <strong>${esc(o.titre)}</strong>
       <span class="evt-meta">
-        <span>${icone("horloge")}${esc(S.plageHoraire(o))}</span>
+        <span>${icone("horloge")}${esc(S.plageHoraire(o) || S.plageDates(o))}</span>
         ${o.lieu ? `<span>${icone("lieu")}${esc(o.lieu)}</span>` : ""}
       </span>
     </a>`;
@@ -231,7 +231,7 @@
         <dl class="infos-evt">
           <div><dt>${icone("calendrier")}<span class="sr-only">Date</span></dt>
             <dd>${esc(S.plageDates(o))}${o.repetition ? `<small>${esc(texteRepetition(o))}</small>` : ""}</dd></div>
-          <div><dt>${icone("horloge")}<span class="sr-only">Horaires</span></dt><dd>${esc(S.plageHoraire(o))}</dd></div>
+          ${S.plageHoraire(o) ? `<div><dt>${icone("horloge")}<span class="sr-only">Horaires</span></dt><dd>${esc(S.plageHoraire(o))}</dd></div>` : ""}
           ${o.lieu ? `<div><dt>${icone("lieu")}<span class="sr-only">Lieu</span></dt><dd>${esc(o.lieu)}</dd></div>` : ""}
           ${o.prix ? `<div><dt>${icone("prix")}<span class="sr-only">Tarif</span></dt><dd>${esc(o.prix)}</dd></div>` : ""}
         </dl>

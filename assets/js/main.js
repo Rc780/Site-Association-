@@ -175,7 +175,7 @@
   const nomCategorie = (cle) => (SITE.categories || {})[cle] || cle || "";
 
   function plageHoraire(o) {
-    if (!o.debut) return o.dateFin ? "Horaires détaillés au programme" : "Toute la journée";
+    if (!o.debut) return o.dateFin ? "" : "Toute la journée";
     return o.fin ? `${heure(o.debut)} – ${heure(o.fin)}` : `À partir de ${heure(o.debut)}`;
   }
 
@@ -204,7 +204,7 @@
         <span class="tag">${esc(nomCategorie(o.categorie))}</span>
         <h3>${esc(o.titre)}</h3>
         <div class="evt-meta">
-          <span class="sr-only">${esc(plageDates(o))}</span>
+          ${+o.jourFin !== +o.jour ? "" : `<span class="sr-only">${esc(plageDates(o))}</span>`}
           <span>${icone("horloge")}${esc(+o.jourFin !== +o.jour ? plageDates(o) : plageHoraire(o))}</span>
           ${o.lieu ? `<span>${icone("lieu")}${esc(o.lieu)}</span>` : ""}
         </div>
