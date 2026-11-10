@@ -42,7 +42,7 @@
     copier: '<rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 0 1 1-1h9"/>',
     externe: '<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>',
     menu: '<path class="ligne" d="M4 7h16"/><path class="ligne" d="M4 12h16"/><path class="ligne" d="M4 17h16"/>',
-    facebook: '<path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v7h4v-7h3l1-4h-4V8.5a.5.5 0 0 1 .5-.5z"/>',
+    facebook: '<path fill="currentColor" stroke="none" fill-rule="evenodd" d="M12 2a10 10 0 1 0 0 20a10 10 0 1 0 0-20zM10.6 21.9V14.9H8.4V12.1h2.2V10.2C10.6 7.6 12.1 6.2 14.5 6.2c.8 0 1.5.1 1.7.1v2.4H15c-1.1 0-1.6.6-1.6 1.5v1.9H16l-.4 2.8h-2.2v7z"/>',
     instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8"/>',
     linkedin: '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/>',
     youtube: '<rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="m10 9.5 5 2.5-5 2.5z"/>'
@@ -499,13 +499,15 @@
     window.addEventListener("resize", () => { if (window.innerWidth > 1040) fermer(); });
   }
 
+  const NOMS_RESEAUX = { facebook: "Facebook", instagram: "Instagram", linkedin: "LinkedIn", youtube: "YouTube" };
+
   function rendrePied() {
     const pied = document.querySelector("[data-site-footer]");
     if (!pied) return;
     pied.classList.add("motif");
     const reseaux = Object.entries(SITE.reseaux || {})
       .filter(([, url]) => url)
-      .map(([nom, url]) => `<a href="${esc(url)}" target="_blank" rel="noopener" aria-label="${esc(majuscule(nom))}">${icone(nom)}</a>`)
+      .map(([nom, url]) => `<a href="${esc(url)}" target="_blank" rel="noopener">${icone(nom)}<span>${esc(NOMS_RESEAUX[nom] || majuscule(nom))}</span><span class="sr-only"> (nouvel onglet)</span></a>`)
       .join("");
     pied.innerHTML = `<div class="wrap">
       <div class="footer-grid">
