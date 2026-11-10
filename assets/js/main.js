@@ -612,7 +612,8 @@
     { mot: "أهلاً وسهلاً", prononciation: "ahlan wa sahlan", langue: "Arabe", lang: "ar", rtl: true },
     { mot: "مرحبا بيكم", prononciation: "mrehba bikoum", langue: "Marocain", lang: "ary", rtl: true },
     { mot: "مرحبا بيكم", prononciation: "marhba bikoum", langue: "Algérien", lang: "arq", rtl: true },
-    { mot: "مرحبا بيكم", prononciation: "marhbé bikom", langue: "Tunisien", lang: "aeb", rtl: true }
+    { mot: "مرحبا بيكم", prononciation: "marhbé bikom", langue: "Tunisien", lang: "aeb", rtl: true },
+    { mot: "Welcome", langue: "Anglais", lang: "en" }
   ];
 
   function blocSalut() {
