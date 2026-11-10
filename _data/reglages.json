@@ -16,6 +16,10 @@
     "linkedin": "",
     "youtube": ""
   },
+  "flyer": {
+    "image": "/assets/img/flyer-prunus-amygdalus.jpg",
+    "description": "Flyer de l'association Prunus-Amygdalus, association loi 1901. Mission : favoriser, développer et soutenir des initiatives de la vie sociale et locale. Domaines d'action : culture, sport, animaux, formation, artisanat et solidarité. Valeurs : partage et convivialité, respect des personnes et des animaux, solidarité et entraide, transmission des savoirs, ouverture à tous et esprit d'initiative. Contact : 15 impasse des Sablons, 33350 Castillon-la-Bataille, prunusamygdalus2@gmail.com."
+  },
   "formulaire": "",
   "adhesionEnLigne": ""
 }

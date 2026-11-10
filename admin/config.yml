@@ -169,6 +169,18 @@ collections:
               - { name: instagram, label: Instagram, widget: string, required: false }
               - { name: linkedin, label: LinkedIn, widget: string, required: false }
               - { name: youtube, label: YouTube, widget: string, required: false }
+          - name: flyer
+            label: Flyer de l'association
+            hint: Affiché sur la page « L'association » avec un bouton de téléchargement. Sans image, la rubrique est masquée.
+            widget: object
+            required: false
+            fields:
+              - { name: image, label: Image du flyer (JPG ou PNG), widget: image, required: false }
+              - name: description
+                label: Description du flyer
+                hint: Résumé de son contenu, lu à voix haute aux personnes malvoyantes.
+                widget: text
+                required: false
           - name: formulaire
             label: Adresse Formspree du formulaire de contact
             hint: "Facultatif. Vide : le formulaire ouvre la messagerie du visiteur. Avec une adresse https://formspree.io/f/… : les messages arrivent par e-mail."

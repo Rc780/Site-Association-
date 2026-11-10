@@ -29,7 +29,7 @@ On y gère, avec des formulaires, sans toucher au code :
 
 - **Agenda** : ajouter, modifier ou supprimer un événement (ponctuel, sur plusieurs jours ou régulier) ;
 - **Blog** : écrire un article, y ajouter des photos ;
-- **Réglages du site** : nom, slogan, adresse, e-mail, téléphone, réseaux sociaux.
+- **Réglages du site** : nom, slogan, adresse, e-mail, téléphone, réseaux sociaux, flyer de l'association.
 
 Après « Publier », le site est à jour en une à deux minutes.
 

@@ -3,7 +3,7 @@
    - en-tête, menu et pied de page (à partir de config.js)
    - outils partagés (dates, agenda, articles, Markdown)
    - petits blocs automatiques : [data-evenements], [data-articles],
-     [data-prochain], [data-salut], [data-cfg]
+     [data-prochain], [data-flyer], [data-salut], [data-cfg]
    ========================================================================== */
 
 (function () {
@@ -608,6 +608,21 @@
     });
   }
 
+  /* Flyer de la page « L'association » (Réglages du site > Flyer) : sans image, la rubrique disparaît. */
+  function blocFlyer() {
+    document.querySelectorAll("[data-flyer]").forEach((zone) => {
+      const flyer = SITE.flyer || {};
+      const src = cheminLocal(flyer.image);
+      if (!src) { zone.remove(); return; }
+      const description = flyer.description || `Flyer de l'association ${SITE.nom || ""}`.trim();
+      zone.querySelector("[data-flyer-image]").innerHTML =
+        `<a href="${esc(src)}" target="_blank" rel="noopener" tabindex="-1"><img src="${esc(src)}" alt="${esc(description)}" loading="lazy"></a>`;
+      zone.querySelector("[data-flyer-boutons]").innerHTML =
+        `<a class="btn btn--primary" href="${esc(src)}" download="${esc(src.split("/").pop())}">Télécharger le flyer</a>
+         <a class="btn btn--ghost" href="${esc(src)}" target="_blank" rel="noopener">Voir en grand<span class="sr-only"> (nouvel onglet)</span></a>`;
+    });
+  }
+
   /* Mot de bienvenue de la page d'accueil : ajoutez ou retirez des langues ici. */
   const SALUTS = [
     { mot: "Bienvenue", langue: "Français", lang: "fr" },
@@ -674,5 +689,6 @@
   blocsEvenements();
   blocsArticles();
   blocProchain();
+  blocFlyer();
   blocSalut();
 })();
