@@ -153,13 +153,16 @@ collections:
           - { name: devise, label: Devise (pied de page), widget: string }
           - name: contact
             label: Coordonnées
+            hint: Laissez une case vide pour masquer la ligne correspondante sur le site.
             widget: object
             fields:
               - { name: email, label: E-mail, widget: string }
-              - { name: telephone, label: Téléphone, widget: string }
-              - { name: adresse, label: Adresse, widget: string }
-              - { name: codePostalVille, label: Code postal et ville, widget: string }
-              - { name: permanences, label: Jours et horaires de permanence, widget: string }
+              - { name: telephone, label: Téléphone, widget: string, required: false }
+              - { name: adresse, label: Adresse, widget: string, required: false }
+              - { name: codePostalVille, label: Code postal et ville, widget: string, required: false }
+              - { name: permanences, label: Jours et horaires de permanence, widget: string, required: false }
+          - { name: rna, label: Numéro RNA (mentions légales), widget: string, required: false }
+          - { name: siren, label: Numéro SIREN (mentions légales), widget: string, required: false }
           - name: reseaux
             label: Réseaux sociaux
             hint: Adresse complète de chaque page (https://…). Laissez vide pour masquer l'icône.

@@ -524,15 +524,15 @@
         <div>
           <h2>Nous trouver</h2>
           <ul>
-            <li>${esc(contact.adresse)}<br>${esc(contact.codePostalVille)}</li>
-            <li><a href="mailto:${esc(contact.email)}">${esc(contact.email)}</a></li>
-            <li><a href="${esc(telLien(contact.telephone))}">${esc(contact.telephone)}</a></li>
+            ${contact.adresse || contact.codePostalVille ? `<li>${[contact.adresse, contact.codePostalVille].filter(Boolean).map(esc).join("<br>")}</li>` : ""}
+            ${contact.email ? `<li><a href="mailto:${esc(contact.email)}">${esc(contact.email)}</a></li>` : ""}
+            ${contact.telephone ? `<li><a href="${esc(telLien(contact.telephone))}">${esc(contact.telephone)}</a></li>` : ""}
           </ul>
         </div>
         <div>
-          <h2>Permanences</h2>
+          <h2>${contact.permanences ? "Permanences" : "Nous rejoindre"}</h2>
           <ul>
-            <li>${esc(contact.permanences)}</li>
+            ${contact.permanences ? `<li>${esc(contact.permanences)}</li>` : ""}
             <li><a href="${esc(lienAdhesion)}">Adhérer</a></li>
             <li><a href="contact.html#benevolat">Devenir bénévole</a></li>
             <li><a href="contact.html#partenariat">Devenir partenaire</a></li>
@@ -559,9 +559,14 @@
     document.querySelectorAll("[data-cfg]").forEach((el) => { el.textContent = lire(el.dataset.cfg) ?? ""; });
     document.querySelectorAll("[data-cfg-lien]").forEach((el) => {
       const type = el.dataset.cfgLien;
-      if (type === "email") { el.href = "mailto:" + contact.email; el.textContent = contact.email; }
-      if (type === "telephone") { el.href = telLien(contact.telephone); el.textContent = contact.telephone; }
+      if (type === "email") { el.href = "mailto:" + (contact.email || ""); el.textContent = contact.email || ""; }
+      if (type === "telephone") { el.href = telLien(contact.telephone); el.textContent = contact.telephone || ""; }
       if (type === "adhesion") { el.href = lienAdhesion; }
+    });
+    // Une ligne de coordonnées dont tous les champs sont vides disparaît (téléphone non renseigné…)
+    document.querySelectorAll("[data-si-rempli]").forEach((el) => {
+      const champs = [...el.querySelectorAll("[data-cfg], [data-cfg-lien]")];
+      if (champs.length && champs.every((c) => !c.textContent.trim())) el.hidden = true;
     });
   }
 
