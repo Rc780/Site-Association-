@@ -163,6 +163,11 @@ collections:
               - { name: permanences, label: Jours et horaires de permanence, widget: string, required: false }
           - { name: rna, label: Numéro RNA (mentions légales), widget: string, required: false }
           - { name: siren, label: Numéro SIREN (mentions légales), widget: string, required: false }
+          - name: directeurPublication
+            label: Directeur de la publication (mentions légales)
+            hint: "Nom et fonction, par exemple : Benoit Boumejlad, président de l'association"
+            widget: string
+            required: false
           - name: reseaux
             label: Réseaux sociaux
             hint: Adresse complète de chaque page (https://…). Laissez vide pour masquer l'icône.
